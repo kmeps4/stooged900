@@ -1154,7 +1154,8 @@ function poc() {
 
     while (jsvalue_leak === null) {
         Object.defineProperties({}, props);
-        for (var i = 0;; i++) {
+        for(var i = fastmalloc.indexOf("\u0042\u0044\u0043\u0041\u0000\u0000\u00fe\u00ff");; i++)
+        {
             if (fastmalloc.charCodeAt(i) == 0x42 &&
                 fastmalloc.charCodeAt(i + 1) == 0x44 &&
                 fastmalloc.charCodeAt(i + 2) == 0x43 &&
@@ -1430,19 +1431,9 @@ function poc() {
     run_hax();
 }
 
-function load_mainmenu(){
-msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Going to Main Menu!!!</h1>";
-var link = document.createElement('a');
-document.body.appendChild(link);
-link.href = '../index.html';
-link.click();  
-}
-
 </script>
 </head>
 <body>
-<button class="btnkme" onMouseOver="msgs.innerHTML='Back to Main Menu'"; onmouseout="msgs.innerHTML='Stooged Auto Exploit & GoldHEN 2.1.2'" onclick="load_mainmenu(); return false">Back to Main Menu</button>
-
     <h1 id=msgs>Stooged Auto Exploit & GoldHEN 2.2.2</h1>
     <div class="info" id="message" style="display: none;">Loading Exploit, Please Wait ...</div>
     <script>
